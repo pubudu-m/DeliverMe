@@ -8,9 +8,9 @@
 import Foundation
 import CoreData
 
-class CacheDataRepository {
+class CacheDataRepository: DataStoreProtocol, CachingProtocol {
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DeliverMeCacheDataModel")
         container.loadPersistentStores(completionHandler: { (description, error) in
             if error != nil {
@@ -20,14 +20,6 @@ class CacheDataRepository {
         
         return container
     }()
-    
-    func saveContext() throws {
-        let context = persistentContainer.viewContext
-        
-        if context.hasChanges {
-            try context.save()
-        }
-    }
     
     func addDeliveries(deliveries: [Delivery]) async throws {
         let context = persistentContainer.viewContext
@@ -60,27 +52,7 @@ class CacheDataRepository {
         let deliveryEntities = try context.fetch(request)
         
         let deliveries: [Delivery] = deliveryEntities.compactMap { entity in
-            guard let deliveryId = entity.deliveryId,
-                  let remarks = entity.remarks,
-                  let pickupTime = entity.pickupTime,
-                  let goodsPicture = entity.goodsPicture,
-                  let deliveryFee = entity.deliveryFee,
-                  let surcharge = entity.surchargeFee,
-                  let routeStart = entity.routeStart,
-                  let routeDestination = entity.routeDestination,
-                  let senderName = entity.senderName,
-                  let senderEmail = entity.senderEmail,
-                  let senderPhone = entity.senderPhone else { return nil }
-            
-            return Delivery(id: deliveryId,
-                            remarks: remarks,
-                            pickupTime: pickupTime,
-                            goodsPicture: goodsPicture,
-                            deliveryFee: deliveryFee,
-                            surcharge: surcharge,
-                            route: DeliveryRoute(start: routeStart, end: routeDestination),
-                            sender: DeliverySender(name: senderName, phone: senderPhone, email: senderEmail),
-                            isFavourite: entity.isFavorite)
+            return convertToDelivery(from: entity)
         }
         
         return deliveries
@@ -105,8 +77,20 @@ class CacheDataRepository {
         }
         entity.isFavorite = !entity.isFavorite
         
-        try context.save()
+        try saveContext()
         
+        return convertToDelivery(from: entity)
+    }
+    
+    private func saveContext() throws {
+        let context = persistentContainer.viewContext
+        
+        if context.hasChanges {
+            try context.save()
+        }
+    }
+    
+    private func convertToDelivery(from entity: DeliveryEntity) -> Delivery? {
         guard let deliveryId = entity.deliveryId,
               let remarks = entity.remarks,
               let pickupTime = entity.pickupTime,

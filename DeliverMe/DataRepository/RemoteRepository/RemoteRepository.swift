@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RemoteRepository {
+class RemoteRepository: DataStoreProtocol {
     
     let networkStore: NetworkStore
     

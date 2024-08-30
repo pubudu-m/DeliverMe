@@ -15,8 +15,8 @@ class MyDeliveriesViewController: UIViewController {
     
     let viewModel: MyDeliveriesViewModel
     
-    var isLoadingData = false
-    var requestDataCount = 20
+    private(set) var isLoadingData = false
+    private(set) var requestDataCount = 20
     
     private let tableView: UITableView = {
         let tableView = UITableView()
