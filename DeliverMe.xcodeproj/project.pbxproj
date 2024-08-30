@@ -19,6 +19,8 @@
 		9B6D050B2C81A92600E94374 /* DeliveriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D050A2C81A92600E94374 /* DeliveriesRequest.swift */; };
 		9B6D050F2C81AA4000E94374 /* CacheDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D050E2C81AA4000E94374 /* CacheDataRepository.swift */; };
 		9B6D05122C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05102C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld */; };
+		9B6D05152C81ACF500E94374 /* MyDeliveriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05142C81ACF500E94374 /* MyDeliveriesViewModel.swift */; };
+		9B6D05172C81B4FC00E94374 /* MyDeliveriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05162C81B4FC00E94374 /* MyDeliveriesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		9B6D050A2C81A92600E94374 /* DeliveriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesRequest.swift; sourceTree = "<group>"; };
 		9B6D050E2C81AA4000E94374 /* CacheDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDataRepository.swift; sourceTree = "<group>"; };
 		9B6D05112C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliverMeCacheDataModel.xcdatamodel; sourceTree = "<group>"; };
+		9B6D05142C81ACF500E94374 /* MyDeliveriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDeliveriesViewModel.swift; sourceTree = "<group>"; };
+		9B6D05162C81B4FC00E94374 /* MyDeliveriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDeliveriesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				9B6D04E92C819CA400E94374 /* MyDeliveriesViewController.swift */,
+				9B6D05162C81B4FC00E94374 /* MyDeliveriesCell.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 		9B6D05132C81ABB500E94374 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D05142C81ACF500E94374 /* MyDeliveriesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6D05152C81ACF500E94374 /* MyDeliveriesViewModel.swift in Sources */,
 				9B6D04EA2C819CA400E94374 /* MyDeliveriesViewController.swift in Sources */,
 				9B6D04FE2C819F6B00E94374 /* RemoteRepository.swift in Sources */,
 				9B6D050F2C81AA4000E94374 /* CacheDataRepository.swift in Sources */,
@@ -229,6 +236,7 @@
 				9B6D05022C819FAE00E94374 /* Delivery.swift in Sources */,
 				9B6D05092C81A0AA00E94374 /* NetworkStore.swift in Sources */,
 				9B6D050B2C81A92600E94374 /* DeliveriesRequest.swift in Sources */,
+				9B6D05172C81B4FC00E94374 /* MyDeliveriesCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
