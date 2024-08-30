@@ -46,9 +46,9 @@ class MyDeliveriesCell: UITableViewCell {
     
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
+        label.textColor = .secondaryLabel
         label.textAlignment = .left
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.numberOfLines = 2
         label.text = "Price"
         label.translatesAutoresizingMaskIntoConstraints = false

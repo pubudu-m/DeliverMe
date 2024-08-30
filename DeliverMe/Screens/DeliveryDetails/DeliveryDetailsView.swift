@@ -14,7 +14,7 @@ struct TitleDescriptionView: View {
     
     var body: some View {
         HStack {
-            Text(title)
+            Text(title.localized())
                 .foregroundStyle(.secondary)
             
             Spacer()
