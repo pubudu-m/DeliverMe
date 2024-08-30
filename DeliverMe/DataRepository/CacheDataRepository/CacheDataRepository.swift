@@ -34,7 +34,7 @@ class CacheDataRepository {
         
         deliveries.forEach { delivery in
             let newData = DeliveryEntity(context: context)
-            newData.deliveryId = delivery.id
+            newData.deliveryId = UUID().uuidString
             newData.remarks = delivery.remarks
             newData.pickupTime = delivery.pickupTime
             newData.goodsPicture = delivery.goodsPicture
@@ -92,5 +92,41 @@ class CacheDataRepository {
         let count = try context.count(for: request)
         
         return count
+    }
+    
+    func updateDelivery(for deliveryId: String) async throws -> Delivery? {
+        let context = persistentContainer.viewContext
+        let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "deliveryId == %@", deliveryId)
+        
+        let deliveryEntities = try context.fetch(request)
+        guard let entity = deliveryEntities.first else {
+            return nil
+        }
+        entity.isFavorite = !entity.isFavorite
+        
+        try context.save()
+        
+        guard let deliveryId = entity.deliveryId,
+              let remarks = entity.remarks,
+              let pickupTime = entity.pickupTime,
+              let goodsPicture = entity.goodsPicture,
+              let deliveryFee = entity.deliveryFee,
+              let surcharge = entity.surchargeFee,
+              let routeStart = entity.routeStart,
+              let routeDestination = entity.routeDestination,
+              let senderName = entity.senderName,
+              let senderEmail = entity.senderEmail,
+              let senderPhone = entity.senderPhone else { return nil }
+        
+        return Delivery(id: deliveryId,
+                        remarks: remarks,
+                        pickupTime: pickupTime,
+                        goodsPicture: goodsPicture,
+                        deliveryFee: deliveryFee,
+                        surcharge: surcharge,
+                        route: DeliveryRoute(start: routeStart, end: routeDestination),
+                        sender: DeliverySender(name: senderName, phone: senderPhone, email: senderEmail),
+                        isFavourite: entity.isFavorite)
     }
 }

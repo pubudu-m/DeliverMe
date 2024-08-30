@@ -9,26 +9,17 @@ import Foundation
 
 class MyDeliveriesViewModel {
     
-    let remoteRepository: RemoteRepository
-    let cacheRepository: CacheDataRepository
-    
-    var deliveries: [Delivery] = []
+    let dataStore: DataStore
     
     init() {
-        self.remoteRepository = RemoteRepository()
-        self.cacheRepository = CacheDataRepository()
+        self.dataStore = DataStore.shared
     }
     
-    func getDeliveries(requestDataCount: Int) async throws {
-        let cachedDataCount = try await cacheRepository.getSavedDeliveriesCount()
-        let offSet = deliveries.count
-        
-        if cachedDataCount < requestDataCount {
-            let newData = try await remoteRepository.getDeliveries(offset: offSet)
-            try await cacheRepository.addDeliveries(deliveries: newData)
-        }
-        
-        let cachedData = try await cacheRepository.getDeliveries(offset: offSet)
-        deliveries.append(contentsOf: cachedData)
+    func getDeliveries() -> [Delivery] {
+        return dataStore.deliveries
+    }
+    
+    func fetchDeliveries(requestDataCount: Int) async throws {
+        try await dataStore.getDeliveries(requestDataCount: requestDataCount)
     }
 }

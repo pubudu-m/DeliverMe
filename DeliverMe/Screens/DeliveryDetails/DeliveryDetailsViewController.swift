@@ -10,10 +10,11 @@ import SwiftUI
 
 class DeliveryDetailsViewController: UIViewController {
     
-    let delivery: Delivery
+    let viewModel: DeliveryDetailsViewModel
+    var delegate: DeliveryDetailsViewDelegate!
     
-    init(delivery: Delivery) {
-        self.delivery = delivery
+    init(viewModel: DeliveryDetailsViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -30,7 +31,7 @@ class DeliveryDetailsViewController: UIViewController {
         navigationItem.title = "Delivery Info"
         view.backgroundColor = .systemBackground
         
-        let deliveryView = DeliveryDetailsView(delivery: delivery)
+        let deliveryView = DeliveryDetailsView(viewModel: viewModel, didTapFavouriteButton: didTapFavouriteButton)
         let hostingController = UIHostingController(rootView: deliveryView)
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -45,5 +46,9 @@ class DeliveryDetailsViewController: UIViewController {
         ])
         
         hostingController.didMove(toParent: self)
+    }
+    
+    private func didTapFavouriteButton() {
+        delegate.forceReladTableView()
     }
 }

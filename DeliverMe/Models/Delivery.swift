@@ -16,7 +16,7 @@ struct Delivery: Codable {
     let surcharge: String
     let route: DeliveryRoute
     let sender: DeliverySender
-    let isFavourite: Bool?
+    var isFavourite: Bool?
 }
 
 struct DeliveryRoute: Codable {

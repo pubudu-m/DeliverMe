@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DeliveryDetailsViewDelegate: AnyObject {
+    func forceReladTableView()
+}
+
 class MyDeliveriesViewController: UIViewController {
     
     let viewModel: MyDeliveriesViewModel
@@ -46,7 +50,7 @@ class MyDeliveriesViewController: UIViewController {
         isLoadingData = true
         Task {
             do {
-                try await viewModel.getDeliveries(requestDataCount: requestDataCount)
+                try await viewModel.fetchDeliveries(requestDataCount: requestDataCount)
                 DispatchQueue.main.async {
                     self.isLoadingData = false
                     self.tableView.reloadData()
@@ -75,7 +79,7 @@ class MyDeliveriesViewController: UIViewController {
 extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.deliveries.count
+        return viewModel.getDeliveries().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,7 +87,7 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
             fatalError("Unable to dequeue MyDeliveriesCell in MyDeliveriesViewController")
         }
         
-        let delivery = viewModel.deliveries[indexPath.row]
+        let delivery = viewModel.getDeliveries()[indexPath.row]
         cell.configure(with: delivery)
         
         return cell
@@ -96,8 +100,11 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let delivery = viewModel.deliveries[indexPath.row]
-        let detailsViewController = DeliveryDetailsViewController(delivery: delivery)
+        let delivery = viewModel.getDeliveries()[indexPath.row]
+        let detailsViewModel = DeliveryDetailsViewModel(delivery: delivery)
+        let detailsViewController = DeliveryDetailsViewController(viewModel: detailsViewModel)
+        detailsViewController.delegate = self
+        
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
@@ -112,3 +119,11 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+extension MyDeliveriesViewController: DeliveryDetailsViewDelegate {
+    
+    func forceReladTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+}
