@@ -17,6 +17,8 @@
 		9B6D05052C81A08300E94374 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05042C81A08300E94374 /* NetworkRequest.swift */; };
 		9B6D05092C81A0AA00E94374 /* NetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05082C81A0AA00E94374 /* NetworkStore.swift */; };
 		9B6D050B2C81A92600E94374 /* DeliveriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D050A2C81A92600E94374 /* DeliveriesRequest.swift */; };
+		9B6D050F2C81AA4000E94374 /* CacheDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D050E2C81AA4000E94374 /* CacheDataRepository.swift */; };
+		9B6D05122C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05102C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		9B6D05042C81A08300E94374 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		9B6D05082C81A0AA00E94374 /* NetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStore.swift; sourceTree = "<group>"; };
 		9B6D050A2C81A92600E94374 /* DeliveriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesRequest.swift; sourceTree = "<group>"; };
+		9B6D050E2C81AA4000E94374 /* CacheDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheDataRepository.swift; sourceTree = "<group>"; };
+		9B6D05112C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliverMeCacheDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		9B6D04E42C819CA400E94374 /* DeliverMe */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D05132C81ABB500E94374 /* ViewModels */,
 				9B6D05032C81A05E00E94374 /* NetworkStore */,
 				9B6D05002C819F9F00E94374 /* Models */,
 				9B6D04FB2C819F4700E94374 /* DataRepository */,
@@ -114,6 +119,8 @@
 		9B6D04FF2C819F8400E94374 /* CacheDataRepository */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D050E2C81AA4000E94374 /* CacheDataRepository.swift */,
+				9B6D05102C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld */,
 			);
 			path = CacheDataRepository;
 			sourceTree = "<group>";
@@ -133,6 +140,13 @@
 				9B6D05082C81A0AA00E94374 /* NetworkStore.swift */,
 			);
 			path = NetworkStore;
+			sourceTree = "<group>";
+		};
+		9B6D05132C81ABB500E94374 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +221,9 @@
 			files = (
 				9B6D04EA2C819CA400E94374 /* MyDeliveriesViewController.swift in Sources */,
 				9B6D04FE2C819F6B00E94374 /* RemoteRepository.swift in Sources */,
+				9B6D050F2C81AA4000E94374 /* CacheDataRepository.swift in Sources */,
 				9B6D04E62C819CA400E94374 /* AppDelegate.swift in Sources */,
+				9B6D05122C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld in Sources */,
 				9B6D04E82C819CA400E94374 /* SceneDelegate.swift in Sources */,
 				9B6D05052C81A08300E94374 /* NetworkRequest.swift in Sources */,
 				9B6D05022C819FAE00E94374 /* Delivery.swift in Sources */,
@@ -427,6 +443,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B6D05102C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B6D05112C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodel */,
+			);
+			currentVersion = 9B6D05112C81AA7300E94374 /* DeliverMeCacheDataModel.xcdatamodel */;
+			path = DeliverMeCacheDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9B6D04DA2C819CA400E94374 /* Project object */;
 }
