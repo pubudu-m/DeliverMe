@@ -9,7 +9,7 @@ import Foundation
 
 class RemoteRepository: DataStoreProtocol {
     
-    let networkStore: NetworkStore
+    let networkStore: NetworkStoreProtocol
     
     init() {
         self.networkStore = NetworkStore()

@@ -7,7 +7,11 @@
 
 import Foundation
 
-class NetworkStore {
+protocol NetworkStoreProtocol {
+    func sendRequest<T: Decodable>(endpoint: NetworkRequest, responseModel: T.Type) async throws -> T
+}
+
+class NetworkStore: NetworkStoreProtocol {
     
     func sendRequest<T: Decodable>(endpoint: NetworkRequest, responseModel: T.Type) async throws -> T {
         var urlComponents = URLComponents()
