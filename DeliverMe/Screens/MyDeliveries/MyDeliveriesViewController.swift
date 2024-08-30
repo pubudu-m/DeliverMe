@@ -73,7 +73,10 @@ class MyDeliveriesViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } catch {
-                print(error.localizedDescription)
+                self.isLoadingData = false
+                let alert = UIAlertController(title: "Ooops".localized(), message: "Something_Went_Wrong".localized(), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Try_Agin".localized(), style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

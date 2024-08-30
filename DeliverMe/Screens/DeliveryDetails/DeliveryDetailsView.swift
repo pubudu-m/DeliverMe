@@ -28,6 +28,7 @@ struct DeliveryDetailsView: View {
     
     @ObservedObject var viewModel: DeliveryDetailsViewModel
     @State private var showingAlert: Bool = false
+    @State private var isPreferenceUpdateSuccess: Bool = false
     var didTapFavouriteButton: () -> Void
     
     var body: some View {
@@ -58,7 +59,9 @@ struct DeliveryDetailsView: View {
             Section(header: Text("Charges")) {
                 TitleDescriptionView(title: "Delivery_Fee", description: viewModel.delivery.deliveryFee)
                 TitleDescriptionView(title: "Supercharge_Fee", description: viewModel.delivery.surcharge)
-                TitleDescriptionView(title: "Total_Fee", description: viewModel.calculateTotalDeliveryFee())
+                TitleDescriptionView(title: "Total_Fee",
+                                     description: Helpers.calculateTotalDeliveryFee(deliveryFee: viewModel.delivery.deliveryFee,
+                                                                                    surcharge: viewModel.delivery.surcharge))
             }
             
             Button(viewModel.delivery.isFavourite! ? "Remove_From_Favourites" : "Add_To_Favourites") {
@@ -66,16 +69,17 @@ struct DeliveryDetailsView: View {
                     do {
                         try await viewModel.updateFavouriteStatus()
                         viewModel.delivery.isFavourite?.toggle()
+                        isPreferenceUpdateSuccess = true
                         showingAlert.toggle()
                         didTapFavouriteButton()
                     } catch {
-                        print(error.localizedDescription)
+                        isPreferenceUpdateSuccess = false
                     }
                 }
             }
             .tint(viewModel.delivery.isFavourite! ? .red : .blue)
-            .alert("Updated_Your_Preference", isPresented: $showingAlert) {
-                Button("Sweet", role: .cancel) { }
+            .alert(isPreferenceUpdateSuccess ? "Updated_Your_Preference" : "Something_Went_Wrong", isPresented: $showingAlert) {
+                Button(isPreferenceUpdateSuccess ? "Sweet" : "Try_Agin", role: .cancel) { }
             }
         }
     }

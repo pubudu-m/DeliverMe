@@ -21,8 +21,4 @@ class DeliveryDetailsViewModel: ObservableObject {
     func updateFavouriteStatus() async throws {
         try await dataStore.updateFavouriteStatus(for: delivery.id)
     }
-    
-    func calculateTotalDeliveryFee() -> String {
-        return Helpers.calculateTotalDeliveryFee(deliveryFee: delivery.deliveryFee, surcharge: delivery.surcharge)
-    }
 }
