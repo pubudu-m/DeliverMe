@@ -100,7 +100,7 @@ class MyDeliveriesCell: UITableViewCell {
         routeStartLabel.text = "From: \(delivery.route.start)"
         routeEndLabel.text = "To: \(delivery.route.end)"
         
-        priceLabel.text = delivery.deliveryFee // total = delivery + supercharge
+        priceLabel.text = Helpers.calculateTotalDeliveryFee(deliveryFee: delivery.deliveryFee, surcharge: delivery.surcharge)
         
         if let isFavourite = delivery.isFavourite {
             favouriteIcon.isHidden = !isFavourite

@@ -29,6 +29,8 @@
 		9B6D05262C81EEF800E94374 /* DataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05252C81EEF800E94374 /* DataStoreProtocol.swift */; };
 		9B6D052A2C81F2B500E94374 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D052C2C81F2B500E94374 /* Localizable.strings */; };
 		9B6D052F2C81F33F00E94374 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D052E2C81F33F00E94374 /* String+Extensions.swift */; };
+		9B6D05312C81F59E00E94374 /* my_deliveries.fixture.json in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D05302C81F59E00E94374 /* my_deliveries.fixture.json */; };
+		9B6D05332C81F6DF00E94374 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05322C81F6DF00E94374 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		9B6D05252C81EEF800E94374 /* DataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreProtocol.swift; sourceTree = "<group>"; };
 		9B6D052B2C81F2B500E94374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B6D052E2C81F33F00E94374 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		9B6D05302C81F59E00E94374 /* my_deliveries.fixture.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = my_deliveries.fixture.json; sourceTree = "<group>"; };
+		9B6D05322C81F6DF00E94374 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				9B6D052C2C81F2B500E94374 /* Localizable.strings */,
+				9B6D05302C81F59E00E94374 /* my_deliveries.fixture.json */,
+				9B6D05322C81F6DF00E94374 /* Helpers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6D05312C81F59E00E94374 /* my_deliveries.fixture.json in Resources */,
 				9B6D04F22C819CA600E94374 /* LaunchScreen.storyboard in Resources */,
 				9B6D052A2C81F2B500E94374 /* Localizable.strings in Resources */,
 				9B6D04EF2C819CA600E94374 /* Assets.xcassets in Resources */,
@@ -288,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6D05152C81ACF500E94374 /* MyDeliveriesViewModel.swift in Sources */,
+				9B6D05332C81F6DF00E94374 /* Helpers.swift in Sources */,
 				9B6D04EA2C819CA400E94374 /* MyDeliveriesViewController.swift in Sources */,
 				9B6D051E2C81BFEA00E94374 /* DeliveryDetailsViewController.swift in Sources */,
 				9B6D04FE2C819F6B00E94374 /* RemoteRepository.swift in Sources */,

@@ -58,6 +58,7 @@ struct DeliveryDetailsView: View {
             Section(header: Text("Charges")) {
                 TitleDescriptionView(title: "Delivery Fee", description: viewModel.delivery.deliveryFee)
                 TitleDescriptionView(title: "Supercharge Fee", description: viewModel.delivery.surcharge)
+                TitleDescriptionView(title: "Total Fee", description: viewModel.calculateTotalDeliveryFee())
             }
             
             Button(viewModel.delivery.isFavourite! ? "Remove from favourites" : "Add to favourites") {
