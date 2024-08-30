@@ -80,13 +80,17 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MyDeliveriesCell.identifier, for: indexPath) as? MyDeliveriesCell else {
-            fatalError("Unable to dequeue DeliveriesCell in DeliveriesViewController")
+            fatalError("Unable to dequeue MyDeliveriesCell in MyDeliveriesViewController")
         }
         
         let delivery = viewModel.deliveries[indexPath.row]
         cell.configure(with: delivery)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
