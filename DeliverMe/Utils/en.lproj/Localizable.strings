@@ -8,3 +8,26 @@
 
 "My_Deliveries_Page_Title" = "My Deliveries";
 "Delivery_Details_Page_Title" = "Delivery Info";
+
+"Route_Info" = "Route Info";
+"Sender_Info" = "Sender Info";
+"Things_To_Deliver" = "Things to deliver";
+"Remarks" = "Remarks";
+"Charges" = "Charges";
+
+"From" = "From";
+"To" = "To";
+
+"Name" = "Name";
+"Phone" = "Phone";
+"Email" = "Email";
+
+"Delivery_Fee" = "Delivery Fee";
+"Supercharge_Fee" = "Supercharge Fee";
+"Total_Fee" = "Total Fee";
+
+"Remove_From_Favourites" = "Remove from favourites";
+"Add_To_Favourites" = "Add to favourites";
+
+"Updated_Your_Preference" = "Updated your preference";
+"Sweet" = "Sweet!";

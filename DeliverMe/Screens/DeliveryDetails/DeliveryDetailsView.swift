@@ -32,18 +32,18 @@ struct DeliveryDetailsView: View {
     
     var body: some View {
         List {
-            Section(header: Text("Route Info")) {
+            Section(header: Text("Route_Info")) {
                 TitleDescriptionView(title: "From", description: viewModel.delivery.route.start)
                 TitleDescriptionView(title: "To", description: viewModel.delivery.route.end)
             }
             
-            Section(header: Text("Sender Info")) {
+            Section(header: Text("Sender_Info")) {
                 TitleDescriptionView(title: "Name", description: viewModel.delivery.sender.name)
                 TitleDescriptionView(title: "Phone", description: viewModel.delivery.sender.phone)
                 TitleDescriptionView(title: "Email", description: viewModel.delivery.sender.email)
             }
             
-            Section(header: Text("Things to deliver")) {
+            Section(header: Text("Things_To_Deliver")) {
                 WebImage(url: URL(string: viewModel.delivery.goodsPicture))
                     .resizable()
                     .frame(width: 120, height: 120)
@@ -56,12 +56,12 @@ struct DeliveryDetailsView: View {
             }
             
             Section(header: Text("Charges")) {
-                TitleDescriptionView(title: "Delivery Fee", description: viewModel.delivery.deliveryFee)
-                TitleDescriptionView(title: "Supercharge Fee", description: viewModel.delivery.surcharge)
-                TitleDescriptionView(title: "Total Fee", description: viewModel.calculateTotalDeliveryFee())
+                TitleDescriptionView(title: "Delivery_Fee", description: viewModel.delivery.deliveryFee)
+                TitleDescriptionView(title: "Supercharge_Fee", description: viewModel.delivery.surcharge)
+                TitleDescriptionView(title: "Total_Fee", description: viewModel.calculateTotalDeliveryFee())
             }
             
-            Button(viewModel.delivery.isFavourite! ? "Remove from favourites" : "Add to favourites") {
+            Button(viewModel.delivery.isFavourite! ? "Remove_From_Favourites" : "Add_To_Favourites") {
                 Task {
                     do {
                         try await viewModel.updateFavouriteStatus()
@@ -74,8 +74,8 @@ struct DeliveryDetailsView: View {
                 }
             }
             .tint(viewModel.delivery.isFavourite! ? .red : .blue)
-            .alert("Updated your preference", isPresented: $showingAlert) {
-                Button("Sweet!", role: .cancel) { }
+            .alert("Updated_Your_Preference", isPresented: $showingAlert) {
+                Button("Sweet", role: .cancel) { }
             }
         }
     }
