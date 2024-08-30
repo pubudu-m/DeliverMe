@@ -28,7 +28,7 @@ class DeliveryDetailsViewController: UIViewController {
     }
     
     private func setupUI() {
-        navigationItem.title = "Delivery Info"
+        navigationItem.title = "Delivery_Details_Page_Title".localized()
         view.backgroundColor = .systemBackground
         
         let deliveryView = DeliveryDetailsView(viewModel: viewModel, didTapFavouriteButton: didTapFavouriteButton)

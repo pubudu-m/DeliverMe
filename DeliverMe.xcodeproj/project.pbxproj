@@ -27,6 +27,8 @@
 		9B6D05222C81C88100E94374 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05212C81C88100E94374 /* DataStore.swift */; };
 		9B6D05242C81D15900E94374 /* DeliveryDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05232C81D15900E94374 /* DeliveryDetailsViewModel.swift */; };
 		9B6D05262C81EEF800E94374 /* DataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05252C81EEF800E94374 /* DataStoreProtocol.swift */; };
+		9B6D052A2C81F2B500E94374 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B6D052C2C81F2B500E94374 /* Localizable.strings */; };
+		9B6D052F2C81F33F00E94374 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D052E2C81F33F00E94374 /* String+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		9B6D05212C81C88100E94374 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		9B6D05232C81D15900E94374 /* DeliveryDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewModel.swift; sourceTree = "<group>"; };
 		9B6D05252C81EEF800E94374 /* DataStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreProtocol.swift; sourceTree = "<group>"; };
+		9B6D052B2C81F2B500E94374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B6D052E2C81F33F00E94374 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 		9B6D04E42C819CA400E94374 /* DeliverMe */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D052D2C81F33000E94374 /* Extensions */,
+				9B6D05272C81F2A100E94374 /* Utils */,
 				9B6D05132C81ABB500E94374 /* ViewModels */,
 				9B6D05032C81A05E00E94374 /* NetworkStore */,
 				9B6D05002C819F9F00E94374 /* Models */,
@@ -188,6 +194,22 @@
 			path = DeliveryDetails;
 			sourceTree = "<group>";
 		};
+		9B6D05272C81F2A100E94374 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9B6D052C2C81F2B500E94374 /* Localizable.strings */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		9B6D052D2C81F33000E94374 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9B6D052E2C81F33F00E94374 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6D04F22C819CA600E94374 /* LaunchScreen.storyboard in Resources */,
+				9B6D052A2C81F2B500E94374 /* Localizable.strings in Resources */,
 				9B6D04EF2C819CA600E94374 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +291,7 @@
 				9B6D04EA2C819CA400E94374 /* MyDeliveriesViewController.swift in Sources */,
 				9B6D051E2C81BFEA00E94374 /* DeliveryDetailsViewController.swift in Sources */,
 				9B6D04FE2C819F6B00E94374 /* RemoteRepository.swift in Sources */,
+				9B6D052F2C81F33F00E94374 /* String+Extensions.swift in Sources */,
 				9B6D05262C81EEF800E94374 /* DataStoreProtocol.swift in Sources */,
 				9B6D050F2C81AA4000E94374 /* CacheDataRepository.swift in Sources */,
 				9B6D04E62C819CA400E94374 /* AppDelegate.swift in Sources */,
@@ -293,6 +317,14 @@
 				9B6D04F12C819CA600E94374 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		9B6D052C2C81F2B500E94374 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B6D052B2C81F2B500E94374 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

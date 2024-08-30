@@ -15,7 +15,16 @@ class MyDeliveriesViewController: UIViewController {
     
     let viewModel: MyDeliveriesViewModel
     
-    private(set) var isLoadingData = false
+    private(set) var isLoadingData = false {
+        didSet {
+            if isLoadingData {
+                displayActivityIndicator()
+            } else {
+                hideActivityIndicator()
+            }
+        }
+    }
+    
     private(set) var requestDataCount = 20
     
     private let tableView: UITableView = {
@@ -24,6 +33,14 @@ class MyDeliveriesViewController: UIViewController {
         tableView.register(MyDeliveriesCell.self, forCellReuseIdentifier: MyDeliveriesCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
     }()
     
     init() {
@@ -62,7 +79,7 @@ class MyDeliveriesViewController: UIViewController {
     }
     
     private func setupUI() {
-        navigationItem.title = "My Deliveries"
+        navigationItem.title = "My_Deliveries_Page_Title".localized()
         
         view.backgroundColor = .systemBackground
         view.addSubview(tableView)
@@ -73,6 +90,24 @@ class MyDeliveriesViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
+    }
+}
+
+extension MyDeliveriesViewController {
+    
+    private func displayActivityIndicator() {
+        view.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+        
+        activityIndicator.startAnimating()
+    }
+    
+    private func hideActivityIndicator() {
+        activityIndicator.stopAnimating()
     }
 }
 
