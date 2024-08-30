@@ -109,6 +109,7 @@ class MyDeliveriesCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
         packageImage.image = nil
         routeStartLabel.text = ""
         routeEndLabel.text = ""

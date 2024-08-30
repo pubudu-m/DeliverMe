@@ -95,6 +95,10 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        let delivery = viewModel.deliveries[indexPath.row]
+        let detailsViewController = DeliveryDetailsViewController(delivery: delivery)
+        self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
