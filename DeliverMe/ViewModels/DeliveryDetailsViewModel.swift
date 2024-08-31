@@ -13,8 +13,8 @@ class DeliveryDetailsViewModel: ObservableObject {
     
     let dataStore: DataStore
     
-    init(delivery: Delivery) {
-        self.dataStore = DataStore.shared
+    init(dataStore: DataStore = DataStore.shared, delivery: Delivery) {
+        self.dataStore = dataStore
         self.delivery = delivery
     }
     

@@ -11,8 +11,10 @@ import SDWebImage
 class MyDeliveriesCell: UITableViewCell {
     static let identifier = "DeliveriesCell"
     
+    // MARK: - Variables
     private(set) var delivery: Delivery!
     
+    // MARK: - UI Components
     private let packageImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
@@ -84,6 +86,7 @@ class MyDeliveriesCell: UITableViewCell {
         return hStack
     }()
 
+    // MARK: - Life Cycle Methods
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()

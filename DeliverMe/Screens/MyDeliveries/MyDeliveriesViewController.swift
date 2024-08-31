@@ -14,6 +14,7 @@ protocol DeliveryDetailsViewDelegate: AnyObject {
 
 class MyDeliveriesViewController: UIViewController {
     
+    // MARK: - Variables
     let viewModel: MyDeliveriesViewModel
     
     private(set) var isLoadingData = false {
@@ -28,6 +29,7 @@ class MyDeliveriesViewController: UIViewController {
     
     private(set) var requestDataCount = 20
     
+    // MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
@@ -44,8 +46,9 @@ class MyDeliveriesViewController: UIViewController {
         return indicator
     }()
     
-    init() {
-        self.viewModel = MyDeliveriesViewModel()
+    // MARK: - Life Cycle Methods
+    init(viewModel: MyDeliveriesViewModel = MyDeliveriesViewModel()) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -104,6 +107,7 @@ class MyDeliveriesViewController: UIViewController {
     }
 }
 
+// MARK: - Helper Functions
 extension MyDeliveriesViewController {
     
     private func displayActivityIndicator() {
@@ -132,6 +136,7 @@ extension MyDeliveriesViewController {
     }
 }
 
+// MARK: - TableView delegates
 extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

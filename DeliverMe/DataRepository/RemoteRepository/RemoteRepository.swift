@@ -7,16 +7,17 @@
 
 import Foundation
 
-class RemoteRepository: DataStoreProtocol {
+final class RemoteRepository: DataStoreProtocol {
     
     let networkStore: NetworkStoreProtocol
     
-    init() {
-        self.networkStore = NetworkStore()
+    init(networkStore: NetworkStoreProtocol = NetworkStore()) {
+        self.networkStore = networkStore
     }
     
     func getDeliveries(offset: Int) async throws -> [Delivery] {
-        let deliveries = try await networkStore.sendRequest(endpoint: DeliveriesRequest.allDeliveries, responseModel: [Delivery].self)
+        let deliveries = try await networkStore.sendRequest(endpoint: DeliveriesRequest.allDeliveries(offSet: offset),
+                                                            responseModel: [Delivery].self)
         return deliveries
     }
 }

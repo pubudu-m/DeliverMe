@@ -20,8 +20,8 @@ class MyDeliveriesViewModel {
         }
     }
     
-    init() {
-        self.dataStore = DataStore.shared
+    init(dataStore: DataStore = DataStore.shared) {
+        self.dataStore = dataStore
     }
     
     func getDeliveries() -> [Delivery] {

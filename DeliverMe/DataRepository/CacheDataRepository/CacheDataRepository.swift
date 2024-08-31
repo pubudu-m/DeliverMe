@@ -8,8 +8,9 @@
 import Foundation
 import CoreData
 
-class CacheDataRepository: DataStoreProtocol, CachingProtocol {
+final class CacheDataRepository: DataStoreProtocol, CachingProtocol {
     
+    // initialize core persistent container
     private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "DeliverMeCacheDataModel")
         container.loadPersistentStores(completionHandler: { (description, error) in
@@ -21,6 +22,7 @@ class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         return container
     }()
     
+    // add new data to cache/core data
     func addDeliveries(deliveries: [Delivery]) async throws {
         let context = persistentContainer.viewContext
         
@@ -43,6 +45,7 @@ class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         try saveContext()
     }
     
+    // retrive data from cache/core data
     func getDeliveries(offset: Int) async throws -> [Delivery] {
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
@@ -58,6 +61,7 @@ class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         return deliveries
     }
     
+    // retrive stored data count in cache/core data
     func getSavedDeliveriesCount() async throws -> Int {
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
@@ -66,6 +70,7 @@ class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         return count
     }
     
+    // update isFavorite status for given deliveryId
     func updateDelivery(for deliveryId: String) async throws -> Delivery? {
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
@@ -90,6 +95,7 @@ class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         }
     }
     
+    // helper function to convert core data DeliveryEntity to Delivery structure
     private func convertToDelivery(from entity: DeliveryEntity) -> Delivery? {
         guard let deliveryId = entity.deliveryId,
               let remarks = entity.remarks,

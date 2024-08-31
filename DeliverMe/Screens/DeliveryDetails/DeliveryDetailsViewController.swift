@@ -10,9 +10,11 @@ import SwiftUI
 
 class DeliveryDetailsViewController: UIViewController {
     
+    // MARK: - Variables
     let viewModel: DeliveryDetailsViewModel
     var delegate: DeliveryDetailsViewDelegate!
     
+    // MARK: - Life Cylce Methods
     init(viewModel: DeliveryDetailsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

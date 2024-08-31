@@ -7,20 +7,25 @@
 
 import Foundation
 
-class DataStore {
+final class DataStore {
     static let shared = DataStore()
     
-    private let remoteRepository: DataStoreProtocol = RemoteRepository()
-    private let cacheRepository: DataStoreProtocol & CachingProtocol = CacheDataRepository()
+    private let remoteRepository: DataStoreProtocol
+    private let cacheRepository: DataStoreProtocol & CachingProtocol
     
     private(set) var deliveries: [Delivery] = []
     
-    private init() {}
+    private init(remoteRepository: DataStoreProtocol = RemoteRepository(),
+                 cacheRepository: DataStoreProtocol & CachingProtocol = CacheDataRepository()) {
+        self.remoteRepository = remoteRepository
+        self.cacheRepository = cacheRepository
+    }
     
     func getDeliveries(requestDataCount: Int) async throws {
         let cachedDataCount = try await cacheRepository.getSavedDeliveriesCount()
         let offSet = deliveries.count
         
+        // if cachedDataCount is less than requestDataCount then fetch new data from remote repository and update the cache
         if cachedDataCount < requestDataCount {
             let newData = try await remoteRepository.getDeliveries(offset: offSet)
             try await cacheRepository.addDeliveries(deliveries: newData)
