@@ -17,8 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-screen-logo" translatesAutoresizingMaskIntoConstraints="NO" id="atM-EG-raS">
+                                <rect key="frame" x="46.666666666666657" y="159" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4Pw-mG-fDu"/>
+                                    <constraint firstAttribute="height" constant="300" id="7vh-fH-K5v"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deliver Me" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBi-cf-hYm">
-                                <rect key="frame" x="122.66666666666667" y="408" width="147.66666666666663" height="36"/>
+                                <rect key="frame" x="122.66666666666667" y="479" width="147.66666666666663" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,8 +34,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pBi-cf-hYm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UCp-KE-YT5"/>
-                            <constraint firstItem="pBi-cf-hYm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="yZ6-XJ-YuA"/>
+                            <constraint firstItem="pBi-cf-hYm" firstAttribute="top" secondItem="atM-EG-raS" secondAttribute="bottom" constant="20" id="3K9-WS-cgT"/>
+                            <constraint firstItem="atM-EG-raS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="MBS-cC-6er"/>
+                            <constraint firstItem="atM-EG-raS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OdA-7X-TFR"/>
+                            <constraint firstItem="pBi-cf-hYm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nK2-4r-kHW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +47,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launch-screen-logo" width="2000" height="2000"/>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
