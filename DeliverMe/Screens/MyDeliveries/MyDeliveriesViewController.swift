@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol DeliveryDetailsViewDelegate: AnyObject {
     func forceReladTableView()
@@ -60,7 +61,14 @@ class MyDeliveriesViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        shouldShowOnbaodingScreens()
         loadData()
+    }
+    
+    private func shouldShowOnbaodingScreens() {
+        if !viewModel.hasSeenOnboarding {
+            displayOnbaordingScreens()
+        }
     }
     
     private func loadData() {
@@ -111,6 +119,16 @@ extension MyDeliveriesViewController {
     
     private func hideActivityIndicator() {
         activityIndicator.stopAnimating()
+    }
+    
+    private func displayOnbaordingScreens() {
+        let onboardingView = OnboardingView {
+            self.viewModel.setOnboardingStatus(true)
+        }
+        
+        let hostingController = UIHostingController(rootView: onboardingView)
+        hostingController.modalPresentationStyle = .fullScreen
+        present(hostingController, animated: true)
     }
 }
 

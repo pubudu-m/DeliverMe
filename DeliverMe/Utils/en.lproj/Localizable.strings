@@ -35,3 +35,12 @@
 "Ooops" = "Ooops!";
 "Something_Went_Wrong" = "Ooops! Something went wrong";
 "Try_Agin" = "Try agin";
+
+"Skip" = "Skip";
+"Next" = "Next";
+"Get_Started" = "Get Started";
+
+"Onboarding_Screen_One_Title" = "Fast Delivery";
+"Onboarding_Screen_One_Headline" = "Get your orders delivered quickly and efficiently right to your doorstep.";
+"Onboarding_Screen_Two_Title" = "Easy Tracking";
+"Onboarding_Screen_Two_Headline" = "Track your orders in real-time with our easy-to-use tracking system.";

@@ -35,6 +35,8 @@
 		9B6D05472C834B4600E94374 /* MockNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05462C834B4600E94374 /* MockNetworkStore.swift */; };
 		9B6D054A2C834C3D00E94374 /* String+ExtensionsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05492C834C3D00E94374 /* String+ExtensionsTest.swift */; };
 		9B6D054C2C834D2B00E94374 /* HelpersTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D054B2C834D2B00E94374 /* HelpersTest.swift */; };
+		9B6D054F2C83513500E94374 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D054E2C83513500E94374 /* OnboardingView.swift */; };
+		9B6D05512C8351CF00E94374 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6D05502C8351CF00E94374 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		9B6D05462C834B4600E94374 /* MockNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkStore.swift; sourceTree = "<group>"; };
 		9B6D05492C834C3D00E94374 /* String+ExtensionsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ExtensionsTest.swift"; sourceTree = "<group>"; };
 		9B6D054B2C834D2B00E94374 /* HelpersTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpersTest.swift; sourceTree = "<group>"; };
+		9B6D054E2C83513500E94374 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		9B6D05502C8351CF00E94374 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,7 @@
 		9B6D04FA2C819D2100E94374 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				9B6D054D2C83511800E94374 /* Onboarding */,
 				9B6D051C2C81BFCD00E94374 /* DeliveryDetails */,
 				9B6D051B2C81BFBF00E94374 /* MyDeliveries */,
 			);
@@ -186,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				9B6D05012C819FAE00E94374 /* Delivery.swift */,
+				9B6D05502C8351CF00E94374 /* Onboarding.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -261,6 +267,14 @@
 				9B6D05462C834B4600E94374 /* MockNetworkStore.swift */,
 			);
 			path = NetworkStoreTest;
+			sourceTree = "<group>";
+		};
+		9B6D054D2C83511800E94374 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				9B6D054E2C83513500E94374 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +388,7 @@
 				9B6D05152C81ACF500E94374 /* MyDeliveriesViewModel.swift in Sources */,
 				9B6D05332C81F6DF00E94374 /* Helpers.swift in Sources */,
 				9B6D04EA2C819CA400E94374 /* MyDeliveriesViewController.swift in Sources */,
+				9B6D05512C8351CF00E94374 /* Onboarding.swift in Sources */,
 				9B6D051E2C81BFEA00E94374 /* DeliveryDetailsViewController.swift in Sources */,
 				9B6D04FE2C819F6B00E94374 /* RemoteRepository.swift in Sources */,
 				9B6D052F2C81F33F00E94374 /* String+Extensions.swift in Sources */,
@@ -384,6 +399,7 @@
 				9B6D04E82C819CA400E94374 /* SceneDelegate.swift in Sources */,
 				9B6D05052C81A08300E94374 /* NetworkRequest.swift in Sources */,
 				9B6D05022C819FAE00E94374 /* Delivery.swift in Sources */,
+				9B6D054F2C83513500E94374 /* OnboardingView.swift in Sources */,
 				9B6D05092C81A0AA00E94374 /* NetworkStore.swift in Sources */,
 				9B6D05202C81C13000E94374 /* DeliveryDetailsView.swift in Sources */,
 				9B6D050B2C81A92600E94374 /* DeliveriesRequest.swift in Sources */,
