@@ -16,17 +16,6 @@ class MyDeliveriesViewController: UIViewController {
     
     // MARK: - Variables
     private let viewModel: MyDeliveriesViewModel
-    
-    private var isLoadingData = false {
-        didSet {
-            if isLoadingData {
-                displayActivityIndicator()
-            } else {
-                hideActivityIndicator()
-            }
-        }
-    }
-    
     private var requestDataCount = 20
     
     // MARK: - UI Components
@@ -74,15 +63,16 @@ class MyDeliveriesViewController: UIViewController {
         }
     }
     
+    @MainActor
     private func loadData() {
-        isLoadingData = true
+        viewModel.isLoadingData = true
+        displayActivityIndicator()
         Task {
             do {
                 try await viewModel.fetchDeliveries(requestDataCount: requestDataCount)
-                DispatchQueue.main.async {
-                    self.isLoadingData = false
-                    self.tableView.reloadData()
-                }
+                viewModel.isLoadingData = false
+                hideActivityIndicator()
+                self.tableView.reloadData()
             } catch let error as AppError {
                 displayErrorAlert(errorMessage: error.localizedDescription)
             } catch {
@@ -135,7 +125,8 @@ extension MyDeliveriesViewController {
     }
     
     private func displayErrorAlert(errorMessage: String) {
-        self.isLoadingData = false
+        viewModel.isLoadingData = false
+        hideActivityIndicator()
         let alert = UIAlertController(title: "Ooops".localized(), message: errorMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Try_Agin".localized(), style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
@@ -179,7 +170,7 @@ extension MyDeliveriesViewController: UITableViewDelegate, UITableViewDataSource
         let offsetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         
-        if !isLoadingData && (offsetY > contentHeight - scrollView.frame.height) {
+        if !viewModel.isLoadingData && (offsetY > contentHeight - scrollView.frame.height) {
             requestDataCount += 20
             loadData()
         }

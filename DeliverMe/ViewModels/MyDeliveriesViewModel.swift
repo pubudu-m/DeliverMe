@@ -20,6 +20,8 @@ class MyDeliveriesViewModel {
         }
     }
     
+    var isLoadingData = false
+    
     init(dataStore: DataStore = DataStore.shared) {
         self.dataStore = dataStore
     }
