@@ -56,3 +56,5 @@ Practical Flow in the App
 - **Cache First**: When a request for data is made, the repository first checks the cache (Core Data) to see if the required data is already available and sufficient.
 - **Remote Fetch**: If the cache doesn't have enough data, the repository fetches the necessary data from the remote API.
 - **Update Cache**: After fetching from the remote source, the repository saves this data to the cache (Core Data).
+
+Since the Delivery structure is complex and I wanted to avoid using third-party tools, using Core Data for caching was a personal preference
