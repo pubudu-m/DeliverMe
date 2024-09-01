@@ -43,3 +43,16 @@ By following these steps, you should be able to run the project with functional 
 - **Utils**: Utility methods and helper functions.
 - **DeliverMeTests**: Contains unit tests for the project.
 
+---
+
+## Repository Pattern for Data Management
+I need to manage data from two different sources: a remote API and a local cache using Core Data. The key challenge here is to optimize data retrieval to ensure the app performs efficiently and provides a smooth user experience.
+
+To handle this, I’ve implemented the repository pattern, which plays a crucial role in managing the app's data flow.
+
+The repository provides a single point of access to the data, encapsulating the logic for determining whether to load data from the cache or fetch it from the remote source.
+
+Practical Flow in the App
+- **Cache First**: When a request for data is made, the repository first checks the cache (Core Data) to see if the required data is already available and sufficient.
+- **Remote Fetch**: If the cache doesn't have enough data, the repository fetches the necessary data from the remote API.
+- **Update Cache**: After fetching from the remote source, the repository saves this data to the cache (Core Data).
