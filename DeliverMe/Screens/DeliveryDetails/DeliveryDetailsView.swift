@@ -64,7 +64,7 @@ struct DeliveryDetailsView: View {
                                                                                     surcharge: viewModel.delivery.surcharge))
             }
             
-            Button(viewModel.delivery.isFavourite! ? "Remove_From_Favourites" : "Add_To_Favourites") {
+            Button(viewModel.delivery.isFavourite ?? false ? "Remove_From_Favourites" : "Add_To_Favourites") {
                 Task {
                     do {
                         try await viewModel.updateFavouriteStatus()
