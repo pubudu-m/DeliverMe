@@ -9,7 +9,7 @@ import Foundation
 
 final class RemoteRepository: DataStorable {
     
-    let networkStore: NetworkStorable
+    private let networkStore: NetworkStorable
     
     init(networkStore: NetworkStorable = NetworkStore()) {
         self.networkStore = networkStore
