@@ -15,9 +15,9 @@ protocol DeliveryDetailsViewDelegate: AnyObject {
 class MyDeliveriesViewController: UIViewController {
     
     // MARK: - Variables
-    let viewModel: MyDeliveriesViewModel
+    private let viewModel: MyDeliveriesViewModel
     
-    private(set) var isLoadingData = false {
+    private var isLoadingData = false {
         didSet {
             if isLoadingData {
                 displayActivityIndicator()
@@ -27,7 +27,7 @@ class MyDeliveriesViewController: UIViewController {
         }
     }
     
-    private(set) var requestDataCount = 20
+    private var requestDataCount = 20
     
     // MARK: - UI Components
     private let tableView: UITableView = {
@@ -64,11 +64,11 @@ class MyDeliveriesViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
-        shouldShowOnbaodingScreens()
+        shouldShowOnboardingScreens()
         loadData()
     }
     
-    private func shouldShowOnbaodingScreens() {
+    private func shouldShowOnboardingScreens() {
         if !viewModel.hasSeenOnboarding {
             displayOnbaordingScreens()
         }
@@ -83,11 +83,10 @@ class MyDeliveriesViewController: UIViewController {
                     self.isLoadingData = false
                     self.tableView.reloadData()
                 }
+            } catch let error as AppError {
+                displayErrorAlert(errorMessage: error.localizedDescription)
             } catch {
-                self.isLoadingData = false
-                let alert = UIAlertController(title: "Ooops".localized(), message: "Something_Went_Wrong".localized(), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Try_Agin".localized(), style: .cancel, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                displayErrorAlert(errorMessage: "Something_Went_Wrong".localized())
             }
         }
     }
@@ -133,6 +132,13 @@ extension MyDeliveriesViewController {
         let hostingController = UIHostingController(rootView: onboardingView)
         hostingController.modalPresentationStyle = .fullScreen
         present(hostingController, animated: true)
+    }
+    
+    private func displayErrorAlert(errorMessage: String) {
+        self.isLoadingData = false
+        let alert = UIAlertController(title: "Ooops".localized(), message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Try_Agin".localized(), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

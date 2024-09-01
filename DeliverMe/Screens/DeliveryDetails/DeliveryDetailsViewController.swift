@@ -11,8 +11,8 @@ import SwiftUI
 class DeliveryDetailsViewController: UIViewController {
     
     // MARK: - Variables
-    let viewModel: DeliveryDetailsViewModel
-    var delegate: DeliveryDetailsViewDelegate!
+    private let viewModel: DeliveryDetailsViewModel
+    var delegate: DeliveryDetailsViewDelegate?
     
     // MARK: - Life Cylce Methods
     init(viewModel: DeliveryDetailsViewModel) {
@@ -51,6 +51,6 @@ class DeliveryDetailsViewController: UIViewController {
     }
     
     private func didTapFavouriteButton() {
-        delegate.forceReladTableView()
+        delegate?.forceReladTableView()
     }
 }

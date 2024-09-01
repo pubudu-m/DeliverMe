@@ -10,13 +10,13 @@ import Foundation
 final class DataStore {
     static let shared = DataStore()
     
-    private let remoteRepository: DataStoreProtocol
-    private let cacheRepository: DataStoreProtocol & CachingProtocol
+    private let remoteRepository: DataStorable
+    private let cacheRepository: DataStorable & Cachable
     
     private(set) var deliveries: [Delivery] = []
     
-    private init(remoteRepository: DataStoreProtocol = RemoteRepository(),
-                 cacheRepository: DataStoreProtocol & CachingProtocol = CacheDataRepository()) {
+    private init(remoteRepository: DataStorable = RemoteRepository(),
+                 cacheRepository: DataStorable & Cachable = CacheDataRepository()) {
         self.remoteRepository = remoteRepository
         self.cacheRepository = cacheRepository
     }

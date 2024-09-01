@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol NetworkStoreProtocol {
+protocol NetworkStorable {
     func sendRequest<T: Decodable>(endpoint: NetworkRequest, responseModel: T.Type) async throws -> T
 }
 
-class NetworkStore: NetworkStoreProtocol {
+class NetworkStore: NetworkStorable {
     
     func sendRequest<T: Decodable>(endpoint: NetworkRequest, responseModel: T.Type) async throws -> T {
         var urlComponents = URLComponents()
@@ -26,12 +26,23 @@ class NetworkStore: NetworkStoreProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         
-        let (data, response) = try await URLSession.shared.data(for: request)
-        
-        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-            throw URLError(.badServerResponse)
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let response = response as? HTTPURLResponse else {
+                throw AppError.badResponse
+            }
+            
+            switch response.statusCode {
+            case 200:
+                guard let decodedResponse = try? JSONDecoder().decode(responseModel, from: data) else {
+                    throw AppError.parsing
+                }
+                return decodedResponse
+            default:
+                throw AppError.unexpectedStatusCode(code: response.statusCode)
+            }
+        } catch {
+            throw AppError.unknown
         }
-        
-        return try JSONDecoder().decode(T.self, from: data)
     }
 }

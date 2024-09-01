@@ -11,7 +11,7 @@ class DeliveryDetailsViewModel: ObservableObject {
     
     @Published var delivery: Delivery
     
-    let dataStore: DataStore
+    private let dataStore: DataStore
     
     init(dataStore: DataStore = DataStore.shared, delivery: Delivery) {
         self.dataStore = dataStore

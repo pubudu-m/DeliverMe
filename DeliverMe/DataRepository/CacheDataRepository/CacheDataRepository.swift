@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-final class CacheDataRepository: DataStoreProtocol, CachingProtocol {
+final class CacheDataRepository: DataStorable, Cachable {
     
     // initialize core persistent container
     private lazy var persistentContainer: NSPersistentContainer = {
@@ -52,22 +52,28 @@ final class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         request.fetchLimit = 20
         request.fetchOffset = offset
         
-        let deliveryEntities = try context.fetch(request)
-        
-        let deliveries: [Delivery] = deliveryEntities.compactMap { entity in
-            return convertToDelivery(from: entity)
+        do {
+            let deliveryEntities = try context.fetch(request)
+            let deliveries: [Delivery] = deliveryEntities.compactMap { entity in
+                return convertToDelivery(from: entity)
+            }
+            
+            return deliveries
+        } catch {
+            throw AppError.cachingError
         }
-        
-        return deliveries
     }
     
     // retrive stored data count in cache/core data
     func getSavedDeliveriesCount() async throws -> Int {
         let context = persistentContainer.viewContext
         let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
-        let count = try context.count(for: request)
         
-        return count
+        do {
+            return try context.count(for: request)
+        } catch {
+            throw AppError.cachingError
+        }
     }
     
     // update isFavorite status for given deliveryId
@@ -76,22 +82,30 @@ final class CacheDataRepository: DataStoreProtocol, CachingProtocol {
         let request: NSFetchRequest<DeliveryEntity> = DeliveryEntity.fetchRequest()
         request.predicate = NSPredicate(format: "deliveryId == %@", deliveryId)
         
-        let deliveryEntities = try context.fetch(request)
-        guard let entity = deliveryEntities.first else {
-            return nil
+        do {
+            let deliveryEntities = try context.fetch(request)
+            guard let entity = deliveryEntities.first else {
+                return nil
+            }
+            entity.isFavorite = !entity.isFavorite
+            
+            try saveContext()
+            
+            return convertToDelivery(from: entity)
+        } catch {
+            throw AppError.cachingError
         }
-        entity.isFavorite = !entity.isFavorite
-        
-        try saveContext()
-        
-        return convertToDelivery(from: entity)
     }
     
     private func saveContext() throws {
         let context = persistentContainer.viewContext
         
-        if context.hasChanges {
-            try context.save()
+        do {
+            if context.hasChanges {
+                try context.save()
+            }
+        } catch {
+            throw AppError.cachingError
         }
     }
     

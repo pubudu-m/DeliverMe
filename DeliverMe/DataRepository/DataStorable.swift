@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol DataStoreProtocol {
+protocol DataStorable {
     func getDeliveries(offset: Int) async throws -> [Delivery]
 }
 
-protocol CachingProtocol {
+protocol Cachable {
     func addDeliveries(deliveries: [Delivery]) async throws
     func updateDelivery(for deliveryId: String) async throws -> Delivery?
     func getSavedDeliveriesCount() async throws -> Int

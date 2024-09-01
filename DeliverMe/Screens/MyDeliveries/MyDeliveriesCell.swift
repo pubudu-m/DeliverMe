@@ -12,7 +12,7 @@ class MyDeliveriesCell: UITableViewCell {
     static let identifier = "DeliveriesCell"
     
     // MARK: - Variables
-    private(set) var delivery: Delivery!
+    private var delivery: Delivery!
     
     // MARK: - UI Components
     private let packageImage: UIImageView = {

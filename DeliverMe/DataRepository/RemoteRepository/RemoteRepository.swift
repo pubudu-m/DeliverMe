@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class RemoteRepository: DataStoreProtocol {
+final class RemoteRepository: DataStorable {
     
-    let networkStore: NetworkStoreProtocol
+    let networkStore: NetworkStorable
     
-    init(networkStore: NetworkStoreProtocol = NetworkStore()) {
+    init(networkStore: NetworkStorable = NetworkStore()) {
         self.networkStore = networkStore
     }
     

@@ -9,7 +9,7 @@ import Foundation
 
 class MyDeliveriesViewModel {
     
-    let dataStore: DataStore
+    private let dataStore: DataStore
     
     private(set) var hasSeenOnboarding: Bool {
         get {

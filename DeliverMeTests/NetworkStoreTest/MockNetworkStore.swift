@@ -28,7 +28,7 @@ extension MockRequest: NetworkRequest {
     }
 }
 
-class MockNetworkStore: NetworkStoreProtocol {
+class MockNetworkStore: NetworkStorable {
     func sendRequest<T: Decodable>(endpoint: NetworkRequest, responseModel: T.Type) async throws -> T {
         let mockData: Data
         if let url = Bundle(for: type(of: self)).url(forResource: "my_deliveries.fixture", withExtension: "json") {
